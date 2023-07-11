@@ -1,10 +1,11 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
-st.header('st.multiselect')
+st.header('Line chart')
 
-options = st.multiselect(
-    'What ar your favolite colors',
-    ['Green','Yellow','Red','Blue'],
-     ['Yellow','Red'])
+chart_data = pd.DataFrame(
+     np.random.randn(20, 3),
+     columns=['a', 'b', 'c'])
 
-st.write('You selected:',options)
+st.line_chart(chart_data)
