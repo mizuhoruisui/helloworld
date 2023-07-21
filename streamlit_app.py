@@ -1,16 +1,24 @@
 import streamlit as st
 
-st.title('Customiziing the theme of Streamlit apps')
+st.title('st,experimental_get_query_params')
 
-st.write('Contents of the `.streamlit/config.toml` file of this app')
+with st.expander('About this app'):
+    st.write("`st.experimental_get_query_params` allowx the retrieval of query parameters directly from the URL of the use's browser.")
 
-st.code("""
-[theme]
-primaryColor="#2E86C1"
-secocndaryBackgroundColor="#AED6F1"
-textColor="#FFFFFF"
-font"monospace"        
-""")
+st.header('1.Instructions')
+st.markdown('''
+In the aboce URL bar of your internet browser, append the following:
+`?name=Jack&surname=Beanstalk`
+after the base URL `http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/`
+such that it becomes
+`http://share.streamlit.io/dataprofessor/st.experimental_get_query_params/?firstname=Jack&surname=Beanstalk`
+''')
 
-number = st.sidebar.slider('Select a number:',0,10,5)
-st.write('Selected number from slider widget is:', number)
+st.header('2.Contents of st.experimental_get_query_params')
+st.write(st.experimental_get_query_params())
+
+st.header('3.Retrieving and displaying information from the URL')
+firstname = st.experimental_get_query_params()['firstname'][0]
+surname = st.esperimental_get_query_params()['surname'][0]
+
+st.write(f'Hello **{firstname} {surname}**,how are you?')
